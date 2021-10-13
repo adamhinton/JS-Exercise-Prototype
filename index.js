@@ -136,7 +136,7 @@ console.log(baby);
   TASK 4
   In your own words explain the four principles for the "this" keyword below:
   1. Window/Global Object Binding: Unless otherwise specified, "this" is the window/console. It's literally the entirety of JS and you can't log it bc it's too big.
-  2. Implicit binding: When a dot precedes a function, "this" is the dot. Brit says this is about 80% of use cases.
+  2. Implicit binding: When a dot precedes a function, "this" isto the left of the dot. Brit says this is about 80% of use cases.
   3. New binding: When we invoke a constructor with new, "this" is the object that was created by the constructor function.
   4. Explicit binding: You're specifying which specific thing you want "this" to refer to, and you can use that anywhere in your code.
 */
