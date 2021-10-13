@@ -29,6 +29,7 @@ Airplane.prototype.land = function () {
 /*
   TASK 1
     - Write a Person Constructor that initializes `name` and `age` from arguments.
+    //asking me to pas
     - All instances of Person should initialize with an empty `stomach` array.
     - Give instances of Person the ability to `.eat("someFood")`:
         + When eating an edible, it should be pushed into the `stomach`.
@@ -39,11 +40,46 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person() {
-  
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+  this.stomach = [];
 }
 
+Person.prototype.eat = function(edible){
+  if(this.stomach.length<10){
+    this.stomach.push(edible);
+  }
+}
 
+Person.prototype.poop = function (){
+  this.stomach = [];
+}
+
+Person.prototype.toString = function(){
+  return `${this.name}, ${this.age}`;
+}
+
+const james = new Person('James', 31);
+const sam = new Person('Sam', 37);
+const latoya = new Person('Latoya', 32);
+
+// console.log(james.toString());
+// console.log(sam.toString())
+// james.eat('pizza');
+// james.eat('raomen');
+// james.eat('bento');
+// james.eat('tacos');
+// james.eat('sandwich');
+// james.eat('sushi');
+// james.eat('cake');
+
+// console.log('James stomach', james.stomach);
+// console.log(james.poop());
+
+// console.log('James stomach after using the bathroom', james.stomach);
+
+//if there's less than 10 items in their stomach they can eat something; otherwise they're full and can't eat.
 
 
 
@@ -63,8 +99,15 @@ function Person() {
         + The `drive` method should return a string "I ran out of fuel at x miles!" x being `odometer`.
 */
 
-function Car() {
-  
+function Car(model, milesPerGallon) {
+  this.model = model;
+  this.milesPerGallon = milesPerGallon;
+  this.tank= 0;
+  this.odometer = 0;
+};
+
+Car.prototype.fill= function (gallons){
+ return this.tank = this.tank + gallons;
 }
 
 
@@ -75,10 +118,22 @@ function Car() {
     - Besides the methods on Person.prototype, babies have the ability to `.play()`:
         + Should return a string "Playing with x", x being the favorite toy.
 */
-function Baby() {
- 
+
+function Baby(name, age, favoriteToy) {
+Person.call(this, name, age);
+ this.favoriteToy = favoriteToy;
 }
 
+Baby.prototype = Object.create(Person.prototype)
+
+Baby.prototype.play = function(favoriteToy){
+  return `Playing with ${this.favoriteToy}`;
+}
+const baby = new Baby('Bob', '7months', 'binky')
+
+
+
+console.log(baby);
 
 /* 
   TASK 4
